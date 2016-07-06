@@ -1,0 +1,56 @@
+{% extends "report.html" %}
+{% set active_page = "e_general" %}
+
+  {% block active_tab %}
+    <h5>Engagement</h5>
+    <li ><a href="e_general">All Features</a></li><span class="sr-only">(current)</span></a></li>
+    <li ><a href="e_topics">Topics</a></li>
+    <h5>Total Views</h5>
+    <li ><a href="vis_general">All Features</a></li>
+    <li ><a href="vis_topics">Topics</a></li>
+    <h5>Total Visitors</h5>
+    <li class="active"><a href="vor_general">All Features</a></li>
+    <li ><a href="vor_topics">Topics</a></li>
+    <h5>Average Read Time</h5>
+    <li ><a href="r_general">All Features</a></li>
+    <li ><a href="r_topics">Topics</a></li>
+    <h5>Social Media Shares</h5>
+    <li ><a href="s_general">All Features</a></li>
+    <li ><a href="s_topics">Topics</a></li>
+    <h5>Comments</h5>
+    <li ><a href="c_general">All Features</a></li>
+    <li ><a href="c_topics">Topics</a></li>
+
+   {% endblock %}
+
+   
+   {% block summary_title %}{{ metric }} - All Features{% endblock %}
+   
+   {% block table_title %}{{ metric }} - All Features{% endblock %}
+   
+   {% block col1 %}Features{% endblock %}
+   
+   {% block table_data %}
+   {% for fet in features %} 
+	<tr class= "{{ fet['clas'] }}" ><td >{{ fet['name'] }}</td>
+	<td align="right">{{ fet['mean']}}</td>
+	<td align="right">{{ fet['med']}}</td>
+	<td align="right">{{ fet['dif']}}</td>
+	<td align="right">{{ fet['param']}}</td>
+	<td align="right">{{ fet['pval']}}</td>
+	<td> {{ fet['per'] }}</td></tr> 
+   {% endfor %}
+   {% endblock %}
+   
+   {% block hidden_table_data %}
+   {% for fet in features %} 
+	<tr>
+	<th>{{ fet['name'] }}</th>
+	<td>{{ fet['mean']}}</td>
+	<td>{{ fet['med']}}</td></tr> 
+   {% endfor %}
+   {% endblock %}
+   
+       
+   {% block yAxis %}{{ grand_mean }}{% endblock %}  
+   {% block units %}'Total Visitors'{% endblock %} 

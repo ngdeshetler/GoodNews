@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Report</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="masthead clearfix">
+            <div class="inner">
+              <!-- <h3 class="masthead-brand">KPCC Metric for News</h3> -->
+              <h3><a class="navbar-brand" style="color:white;" href="welcome">KPCC Metric for News</a></h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li><a href="welcome">Home</a></li>
+                  <li class="active"><a href="report">Review</a></li>
+                  <li><a href="input">Add New</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+          <h4>  Metrics</h4>
+			<h5>Engagement</h5>
+			<li ><a href="e_general">All Features</a></li><span class="sr-only">(current)</span></a></li>
+			<li ><a href="e_topics">Topics</a></li>
+			<h5>Total Views</h5>
+			<li ><a href="vis_general">All Features</a></li>
+			<li ><a href="vis_topics">Topics</a></li>
+			<h5>Total Visitors</h5>
+			<li ><a href="vor_general">All Features</a></li>
+			<li ><a href="vor_topics">Topics</a></li>
+			<h5>Average Read Time</h5>
+			<li ><a href="r_general">All Features</a></li>
+			<li ><a href="r_topics">Topics</a></li>
+			<h5>Social Media Shares</h5>
+			<li ><a href="s_general">All Features</a></li>
+			<li ><a href="s_topics">Topics</a></li>
+			<h5>Comments</h5>
+			<li ><a href="c_general">All Features</a></li>
+			<li ><a href="c_topics">Topics</a></li>
+  			<br>
+  			<h4>About</h5>
+  			<li class="active"><a href="engage_score">Engagement Score</a></li>
+  			<li ><a href="terms">Table Elements</a></li>
+          </ul>
+          
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		
+          <h1 class="page-header">Engagement Score</h1>
+          <div style="margin-right:50px; width:75%;">
+          <p>An explanation of the Engagement Score metric</p>
+          <h3>The need for an Engagement score</h3>
+          <p>
+          In this dataset there are five main engagement metrics to look at:
+          <ul>
+          <li>Total Views</li>
+          <li>Total Visitors</li>
+          <li>Average Read Time</li>
+          <li>Number of Social Media Shares</li>
+          <li>Number of Comments</li>
+          </ul>
+          Each one of these metrics can provide different insights to how users are engaging
+          with the article.  However, it can be difficult to get a broader picture of the
+          user engagement with so many different features and metrics to compare.  One 
+          total Engagement Score would provide an overview of the general engagement based
+          on each feature.
+          </p>
+          <h3>Data Science and Machine Learning to create an Engagement Score</h3>
+          <p>As you can see in the below chat, which plots each of the five metrics against 
+          each other, that most of the metrics are fairly similar to each other.  Articles
+          that have more visitors also tend to have more social media share, etc.
+          </p>
+          <img src="/static/images/pair_plot.png" style="min-width: 310px; height: 800px; margin: 0 auto">
+          <br><br>
+          <p>
+          This similarity between the five metrics allows us to use a machine learning
+          approach called a <a href='https://en.wikipedia.org/wiki/Principal_component_analysis'>
+          Principal component analysis</a> to reduce these metrics down to one main "component".
+          In the initial test case (data from March 2016 - May 2016) this component explained
+          63% of the total variance in the five metrics.
+          <h3>The Engagement Score</h3>
+			This component is the Engagement Score.  Features that are high on the Engagement
+          Score will tend to be high on most of the other five metrics.  The score has been
+          scaled so that 0 is the lowest amount of engagement and 10 is the highest, but
+          the Engagement metric does not directly map back on to any one of the other metrics,
+          and so metric is unitless, and the scores are only meaningful in relation to other scores. 
+          </p>
+          
+
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    
+    <script src="../static/js/bootstrap.min.js"></script> 
+		
+
+  </body>
+  
+ 
+</html>
